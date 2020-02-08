@@ -119,7 +119,7 @@ pytz==2018.9
 pywin32==227
 pywin32-ctypes==0.2.0
 pywinpty==0.5.5
-PyYAML==3.13
+PyYAML==5.1
 pyzmq==17.1.2
 qrcode==6.0
 qreader==0.1
