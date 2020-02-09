@@ -11,4 +11,4 @@ urllib3==1.24.1
 python-telegram-bot==11.1.0
 giphy_client==1.0.0
 googletrans==2.4.0
-beautifulsoup4==1.7.2
+beautifulsoup4==4.8.2
