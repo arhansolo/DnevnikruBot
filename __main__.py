@@ -22,7 +22,7 @@ def functionCommand(bot, update):
 def textMessage(bot, update):
     update.message.reply_text(update.message.text)
 
-    bot.send_message(chat_id=update.message.chat_id, text=response)
+    #bot.send_message(chat_id=update.message.chat_id, text=response)
 
 
 
