@@ -17,15 +17,15 @@ def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='эТо ДнЕвНиКрУ BOOOT! \nОзнакомиться с доступными функциями ты сможешь, отправив /functions')
 
 def functionCommand(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/gif - Команда, которая поднимет тебе настроение!")
+    bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/xxx -")
 
 def textMessage(bot, update):
     update.message.reply_text(update.message.text)
 
-    if response:
-        bot.send_message(chat_id=update.message.chat_id, text=response)
-    else:
-        bot.send_message(chat_id=update.message.chat_id, text='Что ты сказал?')
+    bot.send_message(chat_id=update.message.chat_id, text=response)
+
+
+
 
 
 
