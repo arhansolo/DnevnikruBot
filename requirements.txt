@@ -7,7 +7,7 @@ pyTelegramBotAPI==3.6.6
 requests==2.7.0
 six==1.12.0
 telebot==0.0.3
-urllib3==1.24.1
+urllib3==1.24.2
 python-telegram-bot==11.1.0
 giphy_client==1.0.0
 googletrans==2.4.0
