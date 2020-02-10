@@ -16,12 +16,14 @@ dispatcher = updater.dispatcher
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='эТо ДнЕвНиКрУ BOOOT! \nОзнакомиться с доступными функциями ты сможешь, отправив /functions')
 
+
 def functionCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/xxx -")
+    update.message(textMessage(bot, update))
 
 def textMessage(bot, update):
     update.message.reply_text(update.message.text)
-
+    return update.message.text
     #bot.send_message(chat_id=update.message.chat_id, text=response)
 
 
