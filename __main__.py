@@ -16,6 +16,8 @@ dispatcher = updater.dispatcher
 
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='эТо ДнЕвНиКрУ BOOOT! \nОзнакомиться с доступными функциями ты сможешь, отправив /functions')
+    global n
+    n = 0
 
 
 def functionCommand(bot, update):
