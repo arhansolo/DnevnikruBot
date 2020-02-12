@@ -32,7 +32,8 @@ def textMessage(bot, update):
         update.message.reply_text(update.message.text)
         return update.message.text
         #bot.send_message(chat_id=update.message.chat_id, text=response)
-    else:
+
+    elif n == 0:
         bot.send_message(chat_id=update.message.chat_id, text="lol")
 
 
