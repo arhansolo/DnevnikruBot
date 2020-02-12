@@ -34,7 +34,6 @@ def textMessage(bot, update):
 
     elif n == 0:
         bot.send_message(chat_id=update.message.chat_id, text="lol")
-    global n
     n = 0
 
 
