@@ -16,8 +16,6 @@ dispatcher = updater.dispatcher
 
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='эТо ДнЕвНиКрУ BOOOT! \nОзнакомиться с доступными функциями ты сможешь, отправив /functions')
-    global n
-    n = 0
 
 
 def functionCommand(bot, update):
@@ -25,7 +23,6 @@ def functionCommand(bot, update):
     #update.message(textMessage(bot, update))
     global n
     n = 1
-    return n
 
 
 def textMessage(bot, update):
@@ -38,7 +35,7 @@ def textMessage(bot, update):
     elif n == 0:
         bot.send_message(chat_id=update.message.chat_id, text="lol")
 
-
+    n = 0
 
 
 
