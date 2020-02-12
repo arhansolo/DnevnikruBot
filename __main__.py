@@ -8,6 +8,7 @@ from pprint import pprint
 import apiai, json
 TOKEN = os.environ["TOKEN"]
 
+n = 0
 
 updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
@@ -20,11 +21,19 @@ def startCommand(bot, update):
 def functionCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/xxx -")
     update.message(textMessage(bot, update))
+    global n
+    n = 1
+    return n
+
 
 def textMessage(bot, update):
-    update.message.reply_text(update.message.text)
-    return update.message.text
-    #bot.send_message(chat_id=update.message.chat_id, text=response)
+    global n
+    if n != 0:
+        update.message.reply_text(update.message.text)
+        return update.message.text
+        #bot.send_message(chat_id=update.message.chat_id, text=response)
+    else:
+        pass
 
 
 
