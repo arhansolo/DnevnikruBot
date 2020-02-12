@@ -15,27 +15,30 @@ dispatcher = updater.dispatcher
 
 
 def startCommand(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text='эТо ДнЕвНиКрУ BOOOT! \nОзнакомиться с доступными функциями ты сможешь, отправив /functions')
-
+    bot.send_message(chat_id=update.message.chat_id, text='эТо ДнЕвНиКрУ BOOOT! \nЧтобы авторизоваться, отправьте ваш логин:')
+    global n
+    n = 1
 
 def functionCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/xxx -")
     #update.message(textMessage(bot, update))
-    global n
-    n = 1
 
 
 def textMessage(bot, update):
     global n
-
     if n == 1:
         update.message.reply_text(update.message.text)
+        # return update.message.text
         #bot.send_message(chat_id=update.message.chat_id, text=response)
-
+        bot.send_message(chat_id=update.message.chat_id, text="Отправьте пароль:")
+        n = 2
+    elif n == 2:
+        bot.send_message(chat_id=update.message.chat_id, text="Вы успешно авторизовались!")
+        n = 0
     elif n == 0:
-        bot.send_message(chat_id=update.message.chat_id, text="lol")
+        pass
 
-    n = 0
+
 
 
 
