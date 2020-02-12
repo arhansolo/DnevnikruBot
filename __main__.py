@@ -27,6 +27,7 @@ def functionCommand(bot, update):
 
 def textMessage(bot, update):
     global n
+    n = 0
     if n == 1:
         update.message.reply_text(update.message.text)
         return update.message.text
@@ -34,7 +35,7 @@ def textMessage(bot, update):
 
     elif n == 0:
         bot.send_message(chat_id=update.message.chat_id, text="lol")
-    n = 0
+    
 
 
 
