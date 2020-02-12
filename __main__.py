@@ -20,7 +20,7 @@ def startCommand(bot, update):
 
 def functionCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/xxx -")
-    update.message(textMessage(bot, update))
+    #update.message(textMessage(bot, update))
     global n
     n = 1
     return n
