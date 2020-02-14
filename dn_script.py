@@ -76,13 +76,15 @@ def get_hm_week(login, password):
 
     for i in range(len(date)):
         if subjects[i] is not None and homework[i].find('a') is not None and date[i].find('strong') is not None and i == 0:
-            print(subjects[i].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
+            #print(subjects[i].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
             mas.append(subjects[i].text.strip() + ": " + homework[i].text.strip() + ", " + "выполнить к " + date[i].find('strong').text.strip())
         else:
-            print(subjects[i * 2].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
+            #print(subjects[i * 2].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
             mas.append(subjects[i * 2].text.strip() + ": " + homework[i].text.strip() + ", " + "выполнить к " + date[i].find('strong').text.strip())
     return mas
 
+
+'''
 def get_marks(login, password):
     data = {"_ga": "GA1.2.1298295227.1580831060", "_gat": "1", "_gat_schools": "1", "_gid": 'GA1.2.621150714.1580831060', "_ym_d": "1580831060",
             "_ym_isad": "2", "_ym_uid": "1580831060160769294", "a_r_p_i": "163.2", "dnevnik_sst": "9f9e0704-c317-4f50-8389-7e4bb08bcc4e|05.02.2020 14:55:47", "DnevnikAuth_a": 'QTJOV4pVK8rGwHc/BwMjbgoQo5YzD6mdvGrHHqSGsoqWXBQYQzt1sK/ThRX6wnmDUHn7j+AZmp86ltq9MG5OmFxBpA4wFvrOIMsr8JKm2Ql3rZzU+WJ8DpfmKCqaRO+IfdiwUGpN0a1roJTm/pYppsNBSWVKapdAou0RWTOt7MFZcY+su/p2awWEawC/WN9YgXl8xvDNXyhGoHUFko/4bfCHPhA=',
@@ -91,7 +93,7 @@ def get_marks(login, password):
         'https://schools.dnevnik.ru/marks.aspx?school=1000005527431&index=2&tab=period&homebasededucation=False', data = data)
     soup = BeautifulSoup(r2.text, "html.parser")
     print(soup)
-
+'''
 
 
 
