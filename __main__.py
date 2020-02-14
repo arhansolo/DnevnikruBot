@@ -62,10 +62,12 @@ def hmCommand(bot, update):
 
 function_Command_handler = CommandHandler('functions', functionCommand)
 start_command_handler = CommandHandler('start', startCommand)
+hm_Command_handler = CommandHandler('hm', hmCommand)
 text_message_handler = MessageHandler(Filters.text, textMessage)
 
 
 dispatcher.add_handler(function_Command_handler)
+dispatcher.add_handler(hm_Command_handler)
 dispatcher.add_handler(start_command_handler)
 dispatcher.add_handler(text_message_handler)
 
