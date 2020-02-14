@@ -65,10 +65,10 @@ def calendarCommand(bot, update):
 
 def inline(bot,update):
     selected,date = telegramcalendar.process_calendar_selection(bot, update)
-    print(date)
+    print((date.strftime("%d.%m.%Y")))
     if selected:
         bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text="Вы выбрали %s" % (date.strftime("%d/%m/%Y")),
+                        text="Вы выбрали %s" % (date.strftime("%d.%m.%Y")),
                         reply_markup=ReplyKeyboardRemove())
 
 
