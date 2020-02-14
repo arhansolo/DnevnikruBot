@@ -77,7 +77,7 @@ def inline(bot,update):
 
     if selected:
         bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text= res,
+                        text= "Вы выбрали %s" % (date.strftime("%d.%m.%Y")) + "\n" + res,
                         reply_markup=ReplyKeyboardRemove())
 
 
