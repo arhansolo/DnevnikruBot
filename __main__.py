@@ -31,14 +31,14 @@ def textMessage(bot, update):
         #update.message.reply_text(update.message.text)
         # return update.message.text
         #bot.send_message(chat_id=update.message.chat_id, text=response)
-        login = update.message.text
-        print(login)
         global login
+        login = update.message.text
+
         bot.send_message(chat_id=update.message.chat_id, text="Отправьте пароль:")
         n = 2
     elif n == 2:
-        password = update.message.text
         global password
+        password = update.message.text
         if loginbot(login, password)[1] == 'https://dnevnik.ru/feed':
             bot.send_message(chat_id=update.message.chat_id, text="Вы успешно авторизовались!")
             n = 0
