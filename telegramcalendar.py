@@ -39,7 +39,7 @@ def create_calendar(year=None,month=None):
     keyboard.append(row)
     #Second row - Week Days
     row=[]
-    for day in ["Mo","Tu","We","Th","Fr","Sa","Su"]:
+    for day in ["Пн","Вт","Ср","Чт","Пт","Сб","Вс"]:
         row.append(InlineKeyboardButton(day,callback_data=data_ignore))
     keyboard.append(row)
 

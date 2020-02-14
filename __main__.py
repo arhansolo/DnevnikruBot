@@ -60,15 +60,18 @@ def hmCommand(bot, update):
 
 
 def calendarCommand(bot, update):
-    update.message.reply_text("Please select a date: ", reply_markup=telegramcalendar.create_calendar())
+    update.message.reply_text("Выберите дату: ", reply_markup=telegramcalendar.create_calendar())
 
 
 def inline(bot,update):
     selected,date = telegramcalendar.process_calendar_selection(bot, update)
+    print(date)
     if selected:
         bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text="You selected %s" % (date.strftime("%d/%m/%Y")),
+                        text="Вы выбрали %s" % (date.strftime("%d/%m/%Y")),
                         reply_markup=ReplyKeyboardRemove())
+
+
 
 
 
