@@ -3,6 +3,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Regex
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 import os
 import time
+from dn_script import loginbot
 
 from pprint import pprint
 import apiai, json
@@ -27,14 +28,22 @@ def functionCommand(bot, update):
 def textMessage(bot, update):
     global n
     if n == 1:
-        update.message.reply_text(update.message.text)
+        #update.message.reply_text(update.message.text)
         # return update.message.text
         #bot.send_message(chat_id=update.message.chat_id, text=response)
+        login = update.message.text
+        global login
         bot.send_message(chat_id=update.message.chat_id, text="Отправьте пароль:")
         n = 2
     elif n == 2:
-        bot.send_message(chat_id=update.message.chat_id, text="Вы успешно авторизовались!")
-        n = 0
+        password = update.message.text
+        global password
+        if loginbot(login, password)[1] == 'https://dnevnik.ru/feed':
+            bot.send_message(chat_id=update.message.chat_id, text="Вы успешно авторизовались!")
+            n = 0
+        else:
+            bot.send_message(chat_id=update.message.chat_id, text="Неверный логин или пароль!\nОтправьте логин:")
+            n = 1
     elif n == 0:
         pass
 
