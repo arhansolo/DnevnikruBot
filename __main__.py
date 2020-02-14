@@ -32,6 +32,7 @@ def textMessage(bot, update):
         # return update.message.text
         #bot.send_message(chat_id=update.message.chat_id, text=response)
         login = update.message.text
+        print(login)
         global login
         bot.send_message(chat_id=update.message.chat_id, text="Отправьте пароль:")
         n = 2
