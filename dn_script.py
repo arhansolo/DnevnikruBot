@@ -77,10 +77,10 @@ def get_hm_week(login, password):
     for i in range(len(date)):
         if subjects[i] is not None and homework[i].find('a') is not None and date[i].find('strong') is not None and i == 0:
             print(subjects[i].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
-            mas.append(subjects[i].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
+            mas.append(subjects[i].text.strip() + ": " + homework[i].text.strip() + ", " + "выполнить к " + date[i].find('strong').text.strip())
         else:
             print(subjects[i * 2].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
-            mas.append(subjects[i * 2].text.strip() + ":", homework[i].text.strip() + ",", "выполнить к " + date[i].find('strong').text.strip())
+            mas.append(subjects[i * 2].text.strip() + ": " + homework[i].text.strip() + ", " + "выполнить к " + date[i].find('strong').text.strip())
     return mas
 
 def get_marks(login, password):
@@ -97,7 +97,7 @@ def get_marks(login, password):
 
 #get_timetable_day("30.01.2020")
 #print(get_calls())
-#get_hm_week()
+#get_hm_week(login="", password="")
 
 #get_marks()
 
