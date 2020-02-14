@@ -4,7 +4,7 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, 
 import os
 import telegramcalendar
 import time
-from dn_script import loginbot, get_hm_week
+from dn_script import loginbot, get_hm_week, get_timetable_day
 
 from pprint import pprint
 import apiai, json
@@ -64,11 +64,20 @@ def calendarCommand(bot, update):
 
 
 def inline(bot,update):
+    res = ""
     selected,date = telegramcalendar.process_calendar_selection(bot, update)
     print((date.strftime("%d.%m.%Y")))
+    #"Вы выбрали %s" % (date.strftime("%d.%m.%Y"))
+
+    dd = [date.strftime("%d"), date.strftime("%m"), date.strftime("%Y")]
+
+    mes = get_timetable_day(date=dd, login=login, password=password)
+    for i in mes:
+        res += (i + '\n')
+
     if selected:
         bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text="Вы выбрали %s" % (date.strftime("%d.%m.%Y")),
+                        text= res,
                         reply_markup=ReplyKeyboardRemove())
 
 

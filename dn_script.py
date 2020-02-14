@@ -12,9 +12,11 @@ def loginbot(login, password):
 
 
 def get_timetable_day(date, login, password):
-    day = date[0] + date[1]
-    month = date[3] + date[4]
-    year = date[6] + date[7] + date[8] + date[9]
+    day = date[0]
+    month = date[1]
+    year = date[2]
+
+    mas = []
 
     r1 = loginbot(login=login, password=password)[0].get("https://dnevnik.ru/user/calendar.aspx?year=" + year + "&month=" + month + "&day=" + day)
     soup = BeautifulSoup(r1.text, "html.parser")
@@ -33,11 +35,14 @@ def get_timetable_day(date, login, password):
         try:
             if lessons[i].find('a') is not None\
                     and teachers[i] is not None and les_id[i] is not None and les_lenth[i] is not None:
-                print(les_id[i].text + ":", lessons[i].text ,  '(' + les_lenth[i].text + ')' ',', teachers[i].text)
+                #print(les_id[i].text + ":", lessons[i].text ,  '(' + les_lenth[i].text + ')' ',', teachers[i].text)
+                mas.append(les_id[i].text + ": " +  lessons[i].text +  ' (' + les_lenth[i].text + ')' ', ' + teachers[i].text)
         except IndexError:
             if lessons[i].find('a') is not None\
                     and teachers[i] is not None and les_id[i] is not None:
-                print(les_id[i].text + ":", lessons[i].text + ',', teachers[i].text)
+                #print(les_id[i].text + ":", lessons[i].text + ',', teachers[i].text)
+                mas.append(les_id[i].text + ": " + lessons[i].text + ', ' + teachers[i].text)
+    return mas
 
 def get_calls(login, password):
     r2 = loginbot(login=login, password=password)[0].get('https://schools.dnevnik.ru/schedules/view.aspx?school=1000005527431&group=1560995852516708335&tab=timetable')
