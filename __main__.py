@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Regex
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 import os
 import time
-from dn_script import loginbot
+from dn_script import loginbot, get_hm_week
 
 from pprint import pprint
 import apiai, json
@@ -47,6 +47,14 @@ def textMessage(bot, update):
             n = 1
     elif n == 0:
         pass
+
+
+
+
+def hmCommand(bot, update):
+    mes = get_hm_week(login=login, password=password)
+    for i in mes:
+        bot.send_message(chat_id=update.message.chat_id, text=i)
 
 
 
