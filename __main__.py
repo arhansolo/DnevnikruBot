@@ -4,7 +4,7 @@ from telegram import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, 
 import os
 import telegramcalendar
 import time
-from dn_script import loginbot, get_hm_week, get_timetable_day
+from dn_script import loginbot, get_hm_week, get_timetable_day, get_personal_inf
 
 from pprint import pprint
 import apiai, json
@@ -22,7 +22,7 @@ def startCommand(bot, update):
     n = 1
 
 def functionCommand(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/hm - ДЗ на неделю")
+    bot.send_message(chat_id=update.message.chat_id, text="Список функций: \n/hm - ДЗ на неделю\n/timetable - расписание на любой день в учебном году")
     #update.message(textMessage(bot, update))
 
 
@@ -41,7 +41,7 @@ def textMessage(bot, update):
         global password
         password = update.message.text
         if loginbot(login, password)[1] == 'https://dnevnik.ru/feed':
-            bot.send_message(chat_id=update.message.chat_id, text="Вы успешно авторизовались!\nОтправьте /functions для ознакомления с доступными функциями!")
+            bot.send_message(chat_id=update.message.chat_id, text=get_personal_inf(login=login, password=password)[2]+", вы успешно авторизовались!\nОтправьте /functions для ознакомления с доступными функциями!")
             n = 0
         else:
             bot.send_message(chat_id=update.message.chat_id, text="Неверный логин или пароль!\nОтправьте логин:")
@@ -77,7 +77,7 @@ def inline(bot,update):
 
     if selected:
         bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text= "Вы выбрали %s" % (date.strftime("%d.%m.%Y")) + "\n" + res,
+                        text= "Вы выбрали %s:" % (date.strftime("%d.%m.%Y")) + "\n" + res,
                         reply_markup=ReplyKeyboardRemove())
 
 
@@ -89,7 +89,7 @@ function_Command_handler = CommandHandler('functions', functionCommand)
 start_command_handler = CommandHandler('start', startCommand)
 hm_Command_handler = CommandHandler('hm', hmCommand)
 text_message_handler = MessageHandler(Filters.text, textMessage)
-calendar_command_handler = CommandHandler('calendar', calendarCommand)
+calendar_command_handler = CommandHandler('timetable', calendarCommand)
 inline_handler = CallbackQueryHandler(inline)
 
 

@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import urllib.request
-
+import asyncio
+from pydnevnikruapi.dnevnik import dnevnik
+from datetime import datetime
 
 def loginbot(login, password):
     s = requests.Session()
@@ -10,6 +12,16 @@ def loginbot(login, password):
     return s, r.url
 
 
+def get_personal_inf(login, password):
+    login = login
+    password = password
+    dn = dnevnik.DiaryAPI(login=login, password=password)
+
+    school_id = dn.get_context()["schools"][0]["id"]
+    class_id =  dn.get_context()["eduGroups"][0]["id"]
+    name = dn.get_context()["firstName"]
+
+    return school_id, class_id, name
 
 def get_timetable_day(date, login, password):
     day = date[0]
@@ -45,7 +57,8 @@ def get_timetable_day(date, login, password):
     return mas
 
 def get_calls(login, password):
-    r2 = loginbot(login=login, password=password)[0].get('https://schools.dnevnik.ru/schedules/view.aspx?school=1000005527431&group=1560995852516708335&tab=timetable')
+    r2 = loginbot(login=login, password=password)[0].get('https://schools.dnevnik.ru/schedules/view.aspx?school=' +
+                                                         str(get_personal_inf(login=login, password=password)[0]) + '&group=' +str(get_personal_inf(login=login, password=password)[1])+'&tab=timetable')
     soup = BeautifulSoup(r2.text, "html.parser")
 
     get_calls_mas = []
@@ -103,8 +116,10 @@ def get_marks(login, password):
 
 
 #get_timetable_day("30.01.2020")
-#print(get_calls())
+#print(get_calls("", ""))
 #get_hm_week(login="", password="")
+#print(get_personal_inf("", ""))
+
 
 #get_marks()
 
