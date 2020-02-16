@@ -115,7 +115,7 @@ def get_marks(login, password):
 
 
 
-#get_timetable_day("30.01.2020")
+#print(get_timetable_day(['16', '02', '2020'], "", ""))
 #print(get_calls("", ""))
 #get_hm_week(login="", password="")
 #print(get_personal_inf("", ""))

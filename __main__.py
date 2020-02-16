@@ -72,13 +72,19 @@ def inline(bot,update):
     dd = [date.strftime("%d"), date.strftime("%m"), date.strftime("%Y")]
 
     mes = get_timetable_day(date=dd, login=login, password=password)
-    for i in mes:
-        res += (i + '\n')
+    if mes != []:
+        for i in mes:
+            res += (i + '\n')
 
-    if selected:
-        bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text= "Вы выбрали %s:" % (date.strftime("%d.%m.%Y")) + "\n" + res,
-                        reply_markup=ReplyKeyboardRemove())
+        if selected:
+            bot.send_message(chat_id=update.callback_query.from_user.id,
+                            text= "Вы выбрали %s:" % (date.strftime("%d.%m.%Y")) + "\n" + res,
+                            reply_markup=ReplyKeyboardRemove())
+    else:
+        if selected:
+            bot.send_message(chat_id=update.callback_query.from_user.id,
+                            text= "Вы выбрали %s:" % (date.strftime("%d.%m.%Y")) + "\n" + 'На этот день расписания',
+                            reply_markup=ReplyKeyboardRemove())
 
 
 
