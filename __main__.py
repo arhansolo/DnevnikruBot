@@ -83,7 +83,7 @@ def inline(bot,update):
     else:
         if selected:
             bot.send_message(chat_id=update.callback_query.from_user.id,
-                            text= "Вы выбрали %s:" % (date.strftime("%d.%m.%Y")) + "\n" + 'На этот день расписания',
+                            text= "Вы выбрали %s:" % (date.strftime("%d.%m.%Y")) + "\n" + 'На этот день нет расписания',
                             reply_markup=ReplyKeyboardRemove())
 
 
